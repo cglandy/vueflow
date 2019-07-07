@@ -2,16 +2,38 @@
   <div class="vf-designer">
     <div class="toolbar"></div>
     <div class="container">
-      <div :style="{'width':componentContainerWidth+'px'}"></div>
-      <div>
+      <div class="component-panel" :style="{'width':componentContainerWidth+'px'}"></div>
+      <div class="canvas">
         <Node
           v-for="(item,index) in flowData.nodes"
           :key="index"
-          :width="item.width"
-          :height="item.height"
-          :top="item.top"
-          :left="item.left"
+          :offset="item.offset"
+          :shape="item.shape"
         ></Node>
+        <svg width="600px" height="100px">
+          <defs>
+            <marker
+              id="arrow"
+              markerWidth="10"
+              markerHeight="10"
+              refX="0"
+              refY="3"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+            </marker>
+          </defs>
+          <line
+            x1="295"
+            y1="50"
+            x2="95"
+            y2="75"
+            stroke="#000"
+            stroke-width="5"
+            marker-end="url(#arrow)"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -39,16 +61,22 @@ export default {
     this.flowData = {
       nodes: {
         abces: {
-          width: 180,
-          height: 60,
-          top: 20,
-          left: 30
+          shape: "square",
+          offset: {
+            width: 100,
+            height: 100,
+            top: 20,
+            left: 30
+          }
         },
         abcese: {
-          width: 180,
-          height: 60,
-          top: 220,
-          left: 130
+          shape: "circle",
+          offset: {
+            width: 100,
+            height: 100,
+            top: 220,
+            left: 130
+          }
         }
       }
     };
@@ -68,7 +96,7 @@ export default {
       border-bottom: 1px solid @first-border-color;
     }
     .container {
-      & > div:nth-child(1) {
+      .component-panel:nth-child(1) {
         border-right: 1px solid @first-border-color;
       }
     }
@@ -88,7 +116,7 @@ export default {
     flex: 1;
     display: flex;
     flex-direction: row;
-    & > div:nth-child(2) {
+    .canvas:nth-child(2) {
       flex: 1;
       position: relative;
     }

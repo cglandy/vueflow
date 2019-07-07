@@ -6,6 +6,8 @@ Vue.use(packages);
 import ELEMENT from "element-ui";
 Vue.use(ELEMENT);
 
+import jQuery from "jquery";
+window.$ = jQuery;
 import "./assets/css/base.less";
 import "element-ui/lib/theme-chalk/index.css";
 
