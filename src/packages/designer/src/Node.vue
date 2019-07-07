@@ -9,7 +9,10 @@
     @mouseleave="mouseover=false"
     :style="{'width':offset.width+borderWidth*2+'px','height':offset.height+borderWidth*2+'px','top':offset.top+'px','left':offset.left+'px'}"
   >
-    <div class="vf-node-content">这是一个啥</div>
+    <div class="vf-node-content">
+      <template v-if="hasIcon">a</template>
+      <template v-else>b</template>
+    </div>
     <svg
       width="100%"
       height="100%"
@@ -62,7 +65,7 @@ export default {
   name: "Node",
   props: {
     offset: Object,
-    //square,circle,rectangle,ellipse,rhombus
+    //square,circle,rectangle,ellipse,rhombus,round
     shape: {
       type: String,
       default: "square"
@@ -96,6 +99,9 @@ export default {
         right: $canvas.offset().left + $canvas.width(),
         bottom: $canvas.offset().top + $canvas.height()
       };
+    },
+    hasIcon() {
+      return ["square", "rectangle", "round"].indexOf(this.shape) > -1;
     }
   },
   methods: {
@@ -170,11 +176,15 @@ export default {
   position: absolute;
   cursor: move;
   .vf-node-content {
-    position:inherit;
+    width:100%;
+    height:100%;
+    line-height: 50%;
+    position: inherit;
     color: #ffffff;
     align-items: center;
     align-content: center;
     justify-items: center;
+    text-align: center;
   }
 }
 </style>

@@ -1,31 +1,18 @@
 <template>
-  <div class="container">
-    <!-- <header>
-      <h3>vue flow</h3>
-    </header> -->
-    <div>
-      <Designer></Designer>
-    </div>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Home"
-};
-</script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
 
-<style lang="less" scoped>
-.container {
-  height:100%;
-  display: flex;
-  flex-direction: column;
-  header {
-    height: 60px;
-    border:1px solid #DCDFE6
-  }
-  & > div {
-    flex: 1;
+export default {
+  name: 'home',
+  components: {
+    HelloWorld
   }
 }
-</style>
+</script>
