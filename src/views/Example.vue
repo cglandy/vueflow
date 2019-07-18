@@ -1,5 +1,5 @@
 <template>
-  <Designer></Designer>
+  <designer></designer>
 </template>
 
 <script>

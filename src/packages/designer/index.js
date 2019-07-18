@@ -1,5 +1,5 @@
-import Designer from "./src/Designer.vue";
-Designer.install=function(Vue){
-    Vue.component(Designer.name,Designer);
+import designer from "./src/designer.vue";
+designer.install=function(Vue){
+    Vue.component(designer.name,designer);
 };
-export default Designer;
+export default designer;

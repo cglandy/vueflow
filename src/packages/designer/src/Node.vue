@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: "Node",
+  name: "node",
   props: {
     offset: Object,
     //square,circle,rectangle,ellipse,rhombus,round

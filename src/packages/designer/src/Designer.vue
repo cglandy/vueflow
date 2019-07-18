@@ -2,14 +2,16 @@
   <div class="vf-designer">
     <div class="toolbar"></div>
     <div class="container">
-      <div class="component-panel" :style="{'width':componentContainerWidth+'px'}"></div>
+      <div class="component-panel" :style="{'width':componentContainerWidth+'px'}">
+        <component-panel />
+      </div>
       <div class="canvas">
-        <Node
+        <node
           v-for="(item,index) in flowData.nodes"
           :key="index"
           :offset="item.offset"
           :shape="item.shape"
-        ></Node>
+        ></node>
         <svg width="600px" height="100px">
           <defs>
             <marker
@@ -40,9 +42,10 @@
 </template>
 
 <script>
-import Node from "./Node.vue";
+import node from "./node";
+import componentPanel from "./componentPanel";
 export default {
-  name: "Designer",
+  name: "designer",
   props: {
     componentContainerWidth: {
       type: Number,
@@ -82,7 +85,8 @@ export default {
     };
   },
   components: {
-    Node
+    node,
+    componentPanel
   }
 };
 </script>
